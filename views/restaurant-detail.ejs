@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('includes/headData') %>  <%# For including the common font,styles and Js %>
+    <link rel="stylesheet" href="styles/restaurants.css" />
+  </head>
+  <body>
+    <%- include('includes/header') %>  <%# for including the header %>
+    <%- include('includes/mobile-drawer') %> <%# For including the side drawer %>
+    <main>
+      <h1><%= restaurant.name %></h1>
+      <p><%= restaurant.cuisine %> | <%= restaurant.address %></p>
+      <p><%= restaurant.description %></p>
+      <p><a href="<%= restaurant.website %>">View Website</a></p>
+    </main>
+  </body>
+</html>

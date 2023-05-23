@@ -1,59 +1,29 @@
-const fs = require('fs');
-const path = require('path');
-const express = require('express');
-const { fileURLToPath } = require('url');
+const path = require("path");
+const express = require("express");
+
+const defaultRoute = require("./routes/default");
+const restaurantRoute = require("./routes/restaurant");
 
 const app = express();
 
-app.set('views',path.join(__dirname,'views'));//for setting it in to ejs file:Which generates html
-app.set('view engine','ejs');
+app.set("views", path.join(__dirname, "views")); //for setting it in to ejs file:Which generates html
+app.set("view engine", "ejs");
 
-app.use(express.static('public'));//==> For acessing the styles and java script files
+app.use(express.static("public")); //==> For acessing the styles and java script files
 
-app.use(express.urlencoded({extended:false}));
+app.use(express.urlencoded({ extended: false }));
 
-app.get('/index',function(req,res){
-    // const filePath = path.join(__dirname,'views','index.html');
-    // res.sendFile(filePath);
-    res.render('index');// WIth the help of ejs
+app.use("/", defaultRoute); // localhost:3000/==> First it will come to this file and below
+app.use("/", restaurantRoute);
+
+app.use(function (req, res) {
+  // It will execute if we are entering different path of the routes
+  res.status(404).render("404");
 });
 
-app.get('/recommend',function(req,res){
-    res.render('recommend');
+app.use(function (error, req, res, next) {
+  //It will execute if the server fails to load the resources
+  res.status(500).render("500");
 });
-
-app.post('/recommend',function(req,res){
-    const restaurant = req.body;
-    const filePath = path.join(__dirname,'data','restaurant.json');
-
-    const fileData = fs.readFileSync(filePath);
-
-    const storedrestaurant = JSON.parse(fileData);
-
-    storedrestaurant.push(restaurant);
-
-    fs.writeFileSync(filePath,JSON.stringify(storedrestaurant));
-
-    res.redirect('/confirm');
-})
-
-app.get('/restaurants',function(req,res){
-    const filePath = path.join(__dirname,'data','restaurant.json');
-
-    const fileData = fs.readFileSync(filePath);
-
-    const storedrestaurant = JSON.parse(fileData);
-
-    res.render('restaurants',{numberOfRestaurant :storedrestaurant.length,Restaurants : storedrestaurant});
-    //Note : Restaurants refer to the name which is created in restaurant.ejs file inside the for loop and it refers to the storedrestaurant;
-});
-
-app.get('/about',function(req,res){
-    res.render('about');
-});
-
-app.get('/confirm',function(req,res){
-    res.render('confirm');
-})
 
 app.listen(3000);

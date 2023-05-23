@@ -1,1 +1,34 @@
-[{"name":"Jaiswal Meat House","address":"Chatauni,Motihari","cuisine":"Non-Veg+Veg","website":"https://www.jaiswalmeathouse.com","description":"Its a very good hotel,u must try this atleast once"},{"name":"Handhi chicken","address":"kota","cuisine":"Butter chicken","website":"https://www.google.insta.com","description":"jjj vsj vkvkjvv"},{"name":"Biryani park","address":"Ashok Rajpath patna","cuisine":"Biryani","website":"https://www.biryanipark.com","description":"Price of this hotel is high but the quality is very good\r\n"}]
+[
+  {
+    "id": "r1",
+    "name": "Jaiswal Meat House",
+    "address": "Chatauni,Motihari",
+    "cuisine": "Non-Veg+Veg",
+    "website": "https://www.jaiswalmeathouse.com",
+    "description": "Its a very good hotel,u must try this atleast once"
+  },
+  {
+    "id": "r2",
+    "name": "Handhi chicken",
+    "address": "kota",
+    "cuisine": "Butter chicken",
+    "website": "https://www.google.insta.com",
+    "description": "jjj vsj vkvkjvv"
+  },
+  {
+    "id": "r3",
+    "name": "Biryani park",
+    "address": "Ashok Rajpath patna",
+    "cuisine": "Biryani",
+    "website": "https://www.biryanipark.com",
+    "description": "Price of this hotel is high but the quality is very good"
+  },
+  {
+    "name": "punjabi dhaba",
+    "address": "koramamngla,banglore",
+    "cuisine": "punjabi food",
+    "website": "https://www.nishantkumar.com",
+    "description": "Awesome restaurant\r\n",
+    "id": "cd1d0a5c-05f2-4ff5-8961-5d397ad5283c"
+  }
+]

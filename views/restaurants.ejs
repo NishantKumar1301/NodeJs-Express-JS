@@ -2,25 +2,26 @@
 <html lang="en">
   <head>
     <%- include('includes/headData') %>  <%# For including the common font,styles and Js %>
-    <link rel="stylesheet" href="styles/restaurants.css" />
+    <link rel="stylesheet" href="/styles/restaurants.css" />
   </head>
   <body>
     <%- include('includes/header') %>  <%# for including the header %>
     <%- include('includes/mobile-drawer') %> <%# For including the side drawer %>
     <main>
       <h1>Recommended restaurants</h1>
-      <% if (numberOfRestaurant==0) { %>
+      <% if (numberOfRestaurant == 0) { %>
        <p>Unfourtunately we have no restaurants yet-may be start recomending some ?</p>
-      <% } else{%>
+      <% } else {%>
         <p>Find your next favorite restaurants with help of our other users!</p>
-      <p>We found <%= numberOfRestaurant %> Restaurant</p>
+      <p>We found <%= numberOfRestaurant %> Restaurant.</p>
+      <form action="/restaurants" method="GET">
+        <input type="hidden" name="order" value="<%= nextOrder %>">
+        <button class="btn">Change Order</button>
+      </form>
       <ul id="restaurants-list">
         <% for(const restaurant of Restaurants){ %>
-          <%- include('includes/RestaurantList/restaurant-item',{
-            restaurant:restaurant  
-          }) %>
-          <% } %>
-          <%# restaurant refers to the restaurant inside the for loop %>
+          <%-include('includes/RestaurantList/restaurant-item', {restaurant: restaurant}) %>
+        <% } %>
       </ul>
       <% } %>
     </main>
